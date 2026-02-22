@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformer Open Circuit Test</title>
+    <link rel="icon" href="../images/Page_logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header-container">
+        <div class="logo">
+            <a href="../index.html"><img src="../images/logo.png" alt="College Logo"></a>
+        </div>
+        <div class="title">
+            <h1>G Pulla Reddy Engineering College</h1>
+            <h2>Electrical Machines – Virtual Laboratory</h2>
+        </div>
+        <div class="nav-links" style="display: flex; gap: 20px; align-items: center; margin-left: 20px;"><a
+                href="../index.html" style="color: white; text-decoration: none; font-weight: 500;">Home</a><a
+                href="../help.html" style="color: white; text-decoration: none; font-weight: 500;">Help</a></div>
+        <div class="nav-auth" id="navAuth"></div>
+    </header>
+
+    <div class="experiment-container">
+        <div class="experiment-header">
+            <h1>Transformer Open Circuit Test</h1>
+            <p class="experiment-subtitle">No-Load Test for Core Losses and Magnetizing Current</p>
+        </div>
+
+        <nav class="experiment-nav">
+            <a href="#aim" class="nav-link">Aim</a>
+            <a href="#theory" class="nav-link">Theory</a>
+            <a href="#procedure" class="nav-link">Procedure</a>
+            <a href="#calculations" class="nav-link">Sample Calculations</a>
+            <a href="simulation_transformer_oc.html" class="nav-link simulation-link">Simulation</a>
+        </nav>
+
+        <section id="aim" class="experiment-section">
+            <h2><span class="section-icon">🎯</span> Aim</h2>
+            <div class="content-box">
+                <p>To determine the iron losses (core losses), no-load current, no-load power factor, and magnetizing
+                    component of the no-load current of a transformer.</p>
+                <div class="objectives">
+                    <h3>Objectives:</h3>
+                    <ul>
+                        <li>To measure the core losses (hysteresis and eddy current losses)</li>
+                        <li>To determine the no-load power factor</li>
+                        <li>To find the magnetizing current and core loss component of no-load current</li>
+                        <li>To calculate the equivalent circuit parameters (R<sub>0</sub> and X<sub>0</sub>)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="theory" class="experiment-section">
+            <h2><span class="section-icon">📖</span> Theory</h2>
+            <div class="content-box">
+                <h3>Introduction</h3>
+                <p>The open circuit test (O.C. test) is performed on the low-voltage side of the transformer with the
+                    high-voltage side left open. This test helps determine the core losses and no-load parameters of the
+                    transformer.</p>
+
+                <h3>Principle</h3>
+                <p>When the transformer is energized at rated voltage with the secondary open-circuited, the primary
+                    draws a small current called no-load current (I<sub>0</sub>). This current has two components:</p>
+                <ul>
+                    <li><strong>Magnetizing component (I<sub>m</sub>):</strong> Creates the flux (90° lagging)</li>
+                    <li><strong>Core loss component (I<sub>w</sub>):</strong> Supplies the core losses (in phase with
+                        voltage)</li>
+                </ul>
+
+                <h3>Key Formulas</h3>
+                <div class="formula-box">
+                    <p><strong>No-Load Power:</strong></p>
+                    <p class="formula">P<sub>0</sub> = V<sub>1</sub> ×  I<sub>0</sub> ×  cos f<sub>0</sub> watts</p>
+                    <p>Where: V<sub>1</sub> = Applied voltage, I<sub>0</sub> = No-load current, cos f<sub>0</sub> =
+                        No-load power factor</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Core Losses (P<sub>c</sub>):</strong></p>
+                    <p class="formula">P<sub>c</sub> = P<sub>0</sub> ≈ Iron losses</p>
+                    <p>Since copper losses are negligible at no-load</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>No-Load Power Factor:</strong></p>
+                    <p class="formula">cos f<sub>0</sub> = P<sub>0</sub> / (V<sub>1</sub> ×  I<sub>0</sub>)</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Core Loss Component:</strong></p>
+                    <p class="formula">I<sub>w</sub> = I<sub>0</sub> cos f<sub>0</sub> = P<sub>0</sub> / V<sub>1</sub>
+                    </p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Magnetizing Component:</strong></p>
+                    <p class="formula">I<sub>m</sub> = I<sub>0</sub> sin f<sub>0</sub> = v(I<sub>0</sub>² -
+                        I<sub>w</sub>²)</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Equivalent Circuit Parameters:</strong></p>
+                    <p class="formula">R<sub>0</sub> = V<sub>1</sub> / I<sub>w</sub> = V<sub>1</sub>² / P<sub>0</sub>
+                    </p>
+                    <p class="formula">X<sub>0</sub> = V<sub>1</sub> / I<sub>m</sub></p>
+                </div>
+
+                <h3>Advantages</h3>
+                <ul>
+                    <li>Simple test requiring only voltmeter, ammeter, and wattmeter</li>
+                    <li>Performed at low voltage, so safer</li>
+                    <li>Direct measurement of core losses</li>
+                    <li>Helps in determining transformer efficiency</li>
+                </ul>
+
+                <h3>Core Losses Components</h3>
+                <ul>
+                    <li><strong>Hysteresis Loss:</strong> Due to magnetic reversal in core material</li>
+                    <li><strong>Eddy Current Loss:</strong> Due to induced currents in core laminations</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="procedure" class="experiment-section">
+            <h2><span class="section-icon">📜</span> Procedure</h2>
+            <div class="content-box">
+                <h3>Apparatus Required</h3>
+                <ul>
+                    <li>Single-phase Transformer</li>
+                    <li>AC Supply (Variable)</li>
+                    <li>Voltmeter (2 nos.)</li>
+                    <li>Ammeter</li>
+                    <li>Wattmeter</li>
+                    <li>Connecting wires</li>
+                </ul>
+
+                <h3>Circuit Diagram</h3>
+                <div class="circuit-container" style="text-align: center; margin: 20px 0;">
+                    <img src="../images/oc test.jpg" alt="Circuit Diagram"
+                        style="width: 85%; max-width: 900px; height: auto; border-radius: 10px; border: 2px solid #dee2e6; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>
+
+                <h3>Steps</h3>
+                <ol class="procedure-steps">
+                    <li>
+                        <strong>Connection Setup:</strong>
+                        <ul>
+                            <li>Connect the low-voltage (LV) winding to the AC supply</li>
+                            <li>Keep the high-voltage (HV) winding open-circuited</li>
+                            <li>Connect voltmeter V<sub>1</sub> across LV winding</li>
+                            <li>Connect voltmeter V<sub>2</sub> across HV winding (to verify transformation ratio)</li>
+                            <li>Connect ammeter in series with LV winding</li>
+                            <li>Connect wattmeter with proper connections</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Test Procedure:</strong>
+                        <ul>
+                            <li>Start with zero voltage</li>
+                            <li>Gradually increase the supply voltage to rated value</li>
+                            <li>Ensure the transformer is operating at rated frequency</li>
+                            <li>Allow the transformer to stabilize</li>
+                            <li>Note down the following readings:
+                                <ul>
+                                    <li>Primary voltage (V<sub>1</sub>)</li>
+                                    <li>Secondary voltage (V<sub>2</sub>)</li>
+                                    <li>No-load current (I<sub>0</sub>)</li>
+                                    <li>No-load power (P<sub>0</sub>)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Variation Test (Optional):</strong>
+                        <ul>
+                            <li>Vary the applied voltage from 50% to 110% of rated voltage</li>
+                            <li>Take readings at different voltage levels</li>
+                            <li>Observe how core losses vary with voltage</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Observations:</strong>
+                        <ul>
+                            <li>Record all readings in a tabular format</li>
+                            <li>Calculate no-load power factor, I<sub>w</sub>, I<sub>m</sub></li>
+                            <li>Calculate equivalent circuit parameters</li>
+                            <li>Plot P<sub>0</sub> vs V<sub>1</sub> curve</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Precautions</h3>
+                <ul class="precautions">
+                    <li> Always perform test on LV side for safety</li>
+                    <li> Ensure HV side is completely open</li>
+                    <li> Apply voltage gradually</li>
+                    <li> Check wattmeter connections (current and voltage coils)</li>
+                    <li> Ensure rated frequency is maintained</li>
+                    <li> Allow transformer to reach steady state before taking readings</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="calculations" class="experiment-section">
+            <h2><span class="section-icon">📊</span> Sample Calculations</h2>
+            <div class="content-box">
+                <h3>Given Data</h3>
+                <div class="data-table">
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Transformer Rating</td>
+                            <td>5 kVA</td>
+                        </tr>
+                        <tr>
+                            <td>Primary Voltage (V<sub>1</sub>)</td>
+                            <td>230 V</td>
+                        </tr>
+                        <tr>
+                            <td>Secondary Voltage (V<sub>2</sub>)</td>
+                            <td>115 V</td>
+                        </tr>
+                        <tr>
+                            <td>Frequency</td>
+                            <td>50 Hz</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Open Circuit Test Reading</h3>
+                <div class="data-table">
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Applied Voltage (V<sub>1</sub>)</td>
+                            <td>230 V</td>
+                        </tr>
+                        <tr>
+                            <td>Secondary Voltage (V<sub>2</sub>)</td>
+                            <td>115 V</td>
+                        </tr>
+                        <tr>
+                            <td>No-Load Current (I<sub>0</sub>)</td>
+                            <td>0.8 A</td>
+                        </tr>
+                        <tr>
+                            <td>No-Load Power (P<sub>0</sub>)</td>
+                            <td>45 W</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Calculations</h3>
+                <div class="calculation-box">
+                    <p><strong>Step 1: Calculate No-Load Power Factor</strong></p>
+                    <p>cos f<sub>0</sub> = P<sub>0</sub> / (V<sub>1</sub> ×  I<sub>0</sub>)</p>
+                    <p>cos f<sub>0</sub> = 45 / (230 ×  0.8) = 45 / 184 = <strong>0.2446</strong></p>
+                    <p>f<sub>0</sub> = cos<sup>-1</sup>(0.2446) = <strong>75.84°</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 2: Calculate Core Loss Component (I<sub>w</sub>)</strong></p>
+                    <p>I<sub>w</sub> = I<sub>0</sub> cos f<sub>0</sub> = 0.8 ×  0.2446 = <strong>0.196 A</strong></p>
+                    <p>Or: I<sub>w</sub> = P<sub>0</sub> / V<sub>1</sub> = 45 / 230 = <strong>0.196 A</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 3: Calculate Magnetizing Component (I<sub>m</sub>)</strong></p>
+                    <p>I<sub>m</sub> = I<sub>0</sub> sin f<sub>0</sub> = 0.8 ×  sin(75.84°) = 0.8 ×  0.9698 =
+                        <strong>0.776 A</strong>
+                    </p>
+                    <p>Or: I<sub>m</sub> = v(I<sub>0</sub>² - I<sub>w</sub>²) = v(0.8² - 0.196²) = v(0.64 -
+                        0.0384) =
+                        v0.6016 = <strong>0.776 A</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 4: Calculate Core Losses</strong></p>
+                    <p>P<sub>c</sub> = P<sub>0</sub> = <strong>45 W</strong></p>
+                    <p>(Since copper losses are negligible at no-load)</p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 5: Calculate Equivalent Circuit Parameters</strong></p>
+                    <p>R<sub>0</sub> = V<sub>1</sub> / I<sub>w</sub> = 230 / 0.196 = <strong>1173.5 Ω</strong></p>
+                    <p>Or: R<sub>0</sub> = V<sub>1</sub>² / P<sub>0</sub> = (230)² / 45 = 52900 / 45 = <strong>1175.6
+                            Ω</strong></p>
+                    <p>X<sub>0</sub> = V<sub>1</sub> / I<sub>m</sub> = 230 / 0.776 = <strong>296.4 Ω</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 6: Verify Transformation Ratio</strong></p>
+                    <p>K = V<sub>2</sub> / V<sub>1</sub> = 115 / 230 = <strong>0.5</strong></p>
+                    <p>Or: K = N<sub>2</sub> / N<sub>1</sub> = 0.5 (Step-down transformer)</p>
+                </div>
+
+                <h3>Expected Results</h3>
+                <ul>
+                    <li>No-load current is typically 2-5% of full-load current</li>
+                    <li>No-load power factor is very low (0.1 to 0.3)</li>
+                    <li>Core losses remain approximately constant at all loads</li>
+                    <li>I<sub>m</sub> >> I<sub>w</sub> (magnetizing component is much larger)</li>
+                    <li>Core losses vary approximately as V² (eddy current) and V<sup>1.6</sup> (hysteresis)</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="simulation-section">
+            <a href="simulation_transformer_oc.html" class="btn-simulation">🚀 Start Simulation</a>
+        </div>
+
+        <div class="back-button">
+            <a href="../index.html" class="btn-back">🏠 Back to Home</a>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+</body>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brake Test on DC Motor</title>
+    <link rel="icon" href="../images/Page_logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header-container">
+        <div class="logo">
+            <a href="../index.html"><img src="../images/logo.png" alt="College Logo"></a>
+        </div>
+        <div class="title">
+            <h1>G Pulla Reddy Engineering College</h1>
+            <h2>Electrical Machines – Virtual Laboratory</h2>
+        </div>
+        <div class="nav-links" style="display: flex; gap: 20px; align-items: center; margin-left: 20px;"><a
+                href="../index.html" style="color: white; text-decoration: none; font-weight: 500;">Home</a><a
+                href="../help.html" style="color: white; text-decoration: none; font-weight: 500;">Help</a></div>
+        <div class="nav-auth" id="navAuth"></div>
+    </header>
+
+    <div class="experiment-container">
+        <div class="experiment-header">
+            <h1>Brake Test on DC Motor</h1>
+            <p class="experiment-subtitle">Direct Loading Test for Performance Evaluation</p>
+        </div>
+
+        <nav class="experiment-nav">
+            <a href="#aim" class="nav-link">Aim</a>
+            <a href="#theory" class="nav-link">Theory</a>
+            <a href="#procedure" class="nav-link">Procedure</a>
+            <a href="#calculations" class="nav-link">Sample Calculations</a>
+            <a href="simulation_brake_test.html" class="nav-link simulation-link">Simulation</a>
+        </nav>
+
+        <section id="aim" class="experiment-section">
+            <h2><span class="section-icon">🎯</span> Aim</h2>
+            <div class="content-box">
+                <p>To determine the performance characteristics and efficiency of a DC motor by conducting a brake test
+                    (direct loading test).</p>
+                <div class="objectives">
+                    <h3>Objectives:</h3>
+                    <ul>
+                        <li>To measure the output power, input power, and efficiency at various loads</li>
+                        <li>To plot the performance curves: efficiency vs. load, speed vs. load, torque vs. load</li>
+                        <li>To determine the maximum efficiency point</li>
+                        <li>To analyze the motor's performance characteristics under different loading conditions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="theory" class="experiment-section">
+            <h2><span class="section-icon">📖</span> Theory</h2>
+            <div class="content-box">
+                <h3>Introduction</h3>
+                <p>The brake test is a direct method of testing DC motors where the motor is loaded directly using a
+                    brake drum or rope brake arrangement. This test provides accurate results for efficiency and
+                    performance characteristics.</p>
+
+                <h3>Principle</h3>
+                <p>In a brake test, the motor is loaded mechanically using a brake drum. The load is applied by
+                    tightening a rope or belt around the brake drum. The force applied is measured using a spring
+                    balance, and the radius of the brake drum is known.</p>
+
+                <h3>Key Formulas</h3>
+                <div class="formula-box">
+                    <p><strong>Output Power (P<sub>out</sub>):</strong></p>
+                    <p class="formula">P<sub>out</sub> = (2pNT) / 60 watts</p>
+                    <p>Where: N = Speed in RPM, T = Torque in N-m</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Torque (T):</strong></p>
+                    <p class="formula">T = (W ×  R) N-m</p>
+                    <p>Where: W = Net force (difference between spring balance readings) in Newtons, R = Radius of brake
+                        drum in meters</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Input Power (P<sub>in</sub>):</strong></p>
+                    <p class="formula">P<sub>in</sub> = V ×  I watts</p>
+                    <p>Where: V = Supply voltage in volts, I = Armature current in amperes</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Efficiency (η):</strong></p>
+                    <p class="formula">η = (P<sub>out</sub> / P<sub>in</sub>) ×  100%</p>
+                </div>
+
+                <h3>Advantages</h3>
+                <ul>
+                    <li>Direct measurement of output power</li>
+                    <li>Accurate efficiency determination</li>
+                    <li>Real-time performance evaluation</li>
+                    <li>Suitable for small to medium-sized motors</li>
+                </ul>
+
+                <h3>Disadvantages</h3>
+                <ul>
+                    <li>Requires mechanical loading arrangement</li>
+                    <li>Not suitable for large motors due to heat dissipation issues</li>
+                    <li>Friction losses in brake mechanism affect accuracy</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="procedure" class="experiment-section">
+            <h2><span class="section-icon">📜</span> Procedure</h2>
+            <div class="content-box">
+                <h3>Apparatus Required</h3>
+                <ul>
+                    <li>DC Motor (Shunt/Series/Compound)</li>
+                    <li>DC Supply (Variable)</li>
+                    <li>Rheostat (Field and Armature)</li>
+                    <li>Brake Drum with rope/band</li>
+                    <li>Spring Balances (2 nos.)</li>
+                    <li>Voltmeter, Ammeter</li>
+                    <li>Tachometer (for speed measurement)</li>
+                    <li>Connecting wires</li>
+                </ul>
+
+                <h3>Circuit Diagram</h3>
+                <div class="circuit-container" style="text-align: center; margin: 20px 0;">
+                    <img src="../images/brake test.png" alt="Circuit Diagram"
+                        style="width: 85%; max-width: 900px; height: auto; border-radius: 10px; border: 2px solid #dee2e6; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>
+
+                <h3>Steps</h3>
+                <ol class="procedure-steps">
+                    <li>
+                        <strong>Initial Setup:</strong>
+                        <ul>
+                            <li>Connect the DC motor as per the circuit diagram</li>
+                            <li>Ensure all connections are tight and secure</li>
+                            <li>Check that the brake drum is properly mounted</li>
+                            <li>Set the field rheostat to maximum resistance</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>No-Load Test:</strong>
+                        <ul>
+                            <li>Start the motor with no load applied</li>
+                            <li>Adjust the supply voltage to rated value</li>
+                            <li>Note down: V<sub>0</sub>, I<sub>0</sub>, N<sub>0</sub></li>
+                            <li>Record the spring balance readings (should be equal)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Loading Test:</strong>
+                        <ul>
+                            <li>Gradually apply load by tightening the brake rope</li>
+                            <li>For each load, note down:
+                                <ul>
+                                    <li>Supply voltage (V)</li>
+                                    <li>Armature current (I<sub>a</sub>)</li>
+                                    <li>Field current (I<sub>f</sub>)</li>
+                                    <li>Speed (N) in RPM</li>
+                                    <li>Spring balance readings (W<sub>1</sub> and W<sub>2</sub>)</li>
+                                </ul>
+                            </li>
+                            <li>Take readings for 5-8 different load points</li>
+                            <li>Ensure the motor doesn't exceed rated current</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Observations:</strong>
+                        <ul>
+                            <li>Record all readings in a tabular format</li>
+                            <li>Calculate torque, output power, input power, and efficiency</li>
+                            <li>Plot performance curves</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Precautions</h3>
+                <ul class="precautions">
+                    <li> Ensure proper ventilation for heat dissipation</li>
+                    <li> Do not exceed rated current and voltage</li>
+                    <li> Apply load gradually to avoid sudden jerks</li>
+                    <li> Keep the brake drum cool using water cooling if necessary</li>
+                    <li> Ensure spring balances are properly calibrated</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="calculations" class="experiment-section">
+            <h2><span class="section-icon">📊</span> Sample Calculations</h2>
+            <div class="content-box">
+                <h3>Given Data</h3>
+                <div class="data-table">
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Rated Voltage (V)</td>
+                            <td>220 V</td>
+                        </tr>
+                        <tr>
+                            <td>Rated Current (I)</td>
+                            <td>10 A</td>
+                        </tr>
+                        <tr>
+                            <td>Rated Power</td>
+                            <td>2 HP (1492 W)</td>
+                        </tr>
+                        <tr>
+                            <td>Brake Drum Radius (R)</td>
+                            <td>0.15 m</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Sample Reading</h3>
+                <div class="data-table">
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Supply Voltage (V)</td>
+                            <td>220 V</td>
+                        </tr>
+                        <tr>
+                            <td>Armature Current (I<sub>a</sub>)</td>
+                            <td>8.5 A</td>
+                        </tr>
+                        <tr>
+                            <td>Field Current (I<sub>f</sub>)</td>
+                            <td>0.5 A</td>
+                        </tr>
+                        <tr>
+                            <td>Speed (N)</td>
+                            <td>1450 RPM</td>
+                        </tr>
+                        <tr>
+                            <td>Spring Balance 1 (W<sub>1</sub>)</td>
+                            <td>25 N</td>
+                        </tr>
+                        <tr>
+                            <td>Spring Balance 2 (W<sub>2</sub>)</td>
+                            <td>15 N</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Calculations</h3>
+                <div class="calculation-box">
+                    <p><strong>Step 1: Calculate Net Force</strong></p>
+                    <p>W = W<sub>1</sub> - W<sub>2</sub> = 25 - 15 = <strong>10 N</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 2: Calculate Torque</strong></p>
+                    <p>T = W ×  R = 10 ×  0.15 = <strong>1.5 N-m</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 3: Calculate Output Power</strong></p>
+                    <p>P<sub>out</sub> = (2pNT) / 60</p>
+                    <p>P<sub>out</sub> = (2 ×  p ×  1450 ×  1.5) / 60</p>
+                    <p>P<sub>out</sub> = 13659.7 / 60 = <strong>227.66 W</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 4: Calculate Input Power</strong></p>
+                    <p>P<sub>in</sub> = V ×  I<sub>a</sub> = 220 ×  8.5 = <strong>1870 W</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 5: Calculate Efficiency</strong></p>
+                    <p>η = (P<sub>out</sub> / P<sub>in</sub>) ×  100%</p>
+                    <p>η = (227.66 / 1870) ×  100% = <strong>12.17%</strong></p>
+                </div>
+
+                <h3>Expected Results</h3>
+                <ul>
+                    <li>Efficiency typically ranges from 70% to 85% for DC motors</li>
+                    <li>Maximum efficiency occurs at about 75-80% of full load</li>
+                    <li>Speed decreases slightly with increase in load</li>
+                    <li>Torque increases linearly with armature current</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="simulation-section">
+            <a href="simulation_brake_test.html" class="btn-simulation">🚀 Start Simulation</a>
+        </div>
+
+        <div class="back-button">
+            <a href="../index.html" class="btn-back">🏠 Back to Home</a>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+</body>

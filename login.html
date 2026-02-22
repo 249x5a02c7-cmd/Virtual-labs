@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication - Virtual Labs</title>
+    <link rel="icon" href="images/Page_logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh;">
+
+    <header class="header-container">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="College Logo" style="width: 150px;"></a>
+        </div>
+        <div class="title">
+            <h1>G Pulla Reddy Engineering College</h1>
+            <h2>Electrical Machines – Virtual Laboratory</h2>
+        </div>
+    </header>
+
+    <div class="login-container">
+        <div class="login-toggle">
+            <button id="toggleLogin" class="toggle-btn active" onclick="toggleForm('login')">Login</button>
+            <button id="toggleSignup" class="toggle-btn" onclick="toggleForm('signup')">Sign Up</button>
+        </div>
+
+        <div id="successMsg" class="success-message"></div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form active" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <label for="loginEmail">Username / Email</label>
+                <input type="email" id="loginEmail" placeholder="e.g. user@gprec.ac.in" required>
+                <div id="loginEmailError" class="error-message">Invalid username or domain not allowed.</div>
+            </div>
+            <div class="input-group">
+                <label for="loginPassword">Password</label>
+                <div class="password-input-container">
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    <span class="password-toggle" id="toggleLoginPass"
+                        onclick="togglePasswordVisibility('loginPassword', 'toggleLoginPass')">👁️‍🗨️</span>
+                </div>
+                <div id="loginPassError" class="error-message">Incorrect password.</div>
+            </div>
+            <button type="submit" class="submit-btn" id="loginBtn">Login</button>
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="signupForm" class="auth-form" onsubmit="handleSignup(event)">
+            <div class="input-group">
+                <label for="signupName">Full Name / Username</label>
+                <input type="text" id="signupName" placeholder="Enter your full name" required>
+            </div>
+            <div class="input-group">
+                <label for="signupEmail">Email Address</label>
+                <input type="email" id="signupEmail" placeholder="e.g. user@gprec.ac.in" required>
+                <div id="signupEmailError" class="error-message">Only @gprec.ac.in or @gmail.com domains are allowed.
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="signupPassword">Create Password</label>
+                <div class="password-input-container">
+                    <input type="password" id="signupPassword" placeholder="Create a strong password" required>
+                    <span class="password-toggle" id="toggleSignupPass"
+                        onclick="togglePasswordVisibility('signupPassword', 'toggleSignupPass')">👁️‍🗨️</span>
+                </div>
+                <div class="password-requirements">
+                    Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a
+                    number, and a special character.
+                </div>
+                <div id="signupPassError" class="error-message">Password does not meet requirements.</div>
+            </div>
+            <div class="input-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="password-input-container">
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                    <span class="password-toggle" id="toggleConfirmPass"
+                        onclick="togglePasswordVisibility('confirmPassword', 'toggleConfirmPass')">👁️‍🗨️</span>
+                </div>
+                <div id="confirmPassError" class="error-message">Passwords do not match.</div>
+            </div>
+            <button type="submit" class="submit-btn" id="signupBtn">Create Account</button>
+        </form>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Check URL parameters for mode
+        const urlParams = new URLSearchParams(window.location.search);
+        const mode = urlParams.get('mode');
+        if (mode === 'signup') {
+            toggleForm('signup');
+        }
+
+        function toggleForm(formType) {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const loginToggle = document.getElementById('toggleLogin');
+            const signupToggle = document.getElementById('toggleSignup');
+
+            if (formType === 'login') {
+                loginForm.classList.add('active');
+                signupForm.classList.remove('active');
+                loginToggle.classList.add('active');
+                signupToggle.classList.remove('active');
+            } else {
+                loginForm.classList.remove('active');
+                signupForm.classList.add('active');
+                loginToggle.classList.remove('active');
+                signupToggle.classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

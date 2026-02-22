@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swinburne's Test</title>
+    <link rel="icon" href="../images/Page_logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header-container">
+        <div class="logo"><a href="../index.html"><img src="../images/logo.png" alt="College Logo"></a></div>
+        <div class="title">
+            <h1>G Pulla Reddy Engineering College</h1>
+            <h2>Electrical Machines – Virtual Laboratory</h2>
+        </div>
+        <div class="nav-links" style="display: flex; gap: 20px; align-items: center; margin-left: 20px;"><a
+                href="../index.html" style="color: white; text-decoration: none; font-weight: 500;">Home</a><a
+                href="../help.html" style="color: white; text-decoration: none; font-weight: 500;">Help</a></div>
+        <div class="nav-auth" id="navAuth"></div>
+    </header>
+
+    <div class="experiment-container">
+        <div class="experiment-header">
+            <h1>Swinburne's Test</h1>
+            <p class="experiment-subtitle">No-Load Test for Efficiency Predetermination</p>
+        </div>
+
+        <nav class="experiment-nav">
+            <a href="#aim" class="nav-link">Aim</a>
+            <a href="#theory" class="nav-link">Theory</a>
+            <a href="#procedure" class="nav-link">Procedure</a>
+            <a href="#calculations" class="nav-link">Sample Calculations</a>
+            <a href="simulation_swinburne.html" class="nav-link simulation-link">Simulation</a>
+        </nav>
+
+        <section id="aim" class="experiment-section">
+            <h2><span class="section-icon">🎯</span> Aim</h2>
+            <div class="content-box">
+                <p>To predetermine the efficiency of a DC shunt motor at any load using Swinburne's test (no-load test
+                    method).</p>
+                <div class="objectives">
+                    <h3>Objectives:</h3>
+                    <ul>
+                        <li>To determine the constant losses (iron losses and friction losses) of the motor</li>
+                        <li>To calculate the efficiency at different loads without actually loading the motor</li>
+                        <li>To plot efficiency vs. load characteristics</li>
+                        <li>To understand the indirect method of efficiency determination</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="theory" class="experiment-section">
+            <h2><span class="section-icon">📖</span> Theory</h2>
+            <div class="content-box">
+                <h3>Introduction</h3>
+                <p>Swinburne's test is an indirect method of testing DC shunt motors. It requires only a no-load test to
+                    determine the efficiency at any load. This method is economical and convenient as it doesn't require
+                    actual loading of the motor.</p>
+
+                <h3>Principle</h3>
+                <p>The test is based on the assumption that for a DC shunt motor, the flux remains constant (since field
+                    current is constant), and the losses can be divided into:</p>
+                <ul>
+                    <li><strong>Constant losses:</strong> Iron losses and mechanical losses (friction + windage)</li>
+                    <li><strong>Variable losses:</strong> Copper losses (I²R losses)</li>
+                </ul>
+
+                <h3>Key Formulas</h3>
+                <div class="formula-box">
+                    <p><strong>No-Load Input Power:</strong></p>
+                    <p class="formula">P<sub>0</sub> = V<sub>0</sub> ×  I<sub>0</sub> watts</p>
+                    <p>Where: V<sub>0</sub> = No-load voltage, I<sub>0</sub> = No-load current</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Constant Losses (P<sub>c</sub>):</strong></p>
+                    <p class="formula">P<sub>c</sub> = P<sub>0</sub> - I<sub>0</sub>²R<sub>a</sub> ≈ P<sub>0</sub>
+                    </p>
+                    <p>Since I<sub>0</sub> is very small, copper loss is negligible</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Armature Copper Loss at Load:</strong></p>
+                    <p class="formula">P<sub>cu</sub> = I<sub>a</sub>²R<sub>a</sub> watts</p>
+                    <p>Where: I<sub>a</sub> = Armature current at load, R<sub>a</sub> = Armature resistance</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Total Losses at Load:</strong></p>
+                    <p class="formula">P<sub>loss</sub> = P<sub>c</sub> + I<sub>a</sub>²R<sub>a</sub></p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Efficiency at Load:</strong></p>
+                    <p class="formula">η = (P<sub>in</sub> - P<sub>loss</sub>) / P<sub>in</sub> ×  100%</p>
+                    <p>Or: η = P<sub>out</sub> / P<sub>in</sub> ×  100%</p>
+                </div>
+
+                <h3>Advantages</h3>
+                <ul>
+                    <li>Very economical - requires only no-load test</li>
+                    <li>No need for actual loading arrangement</li>
+                    <li>Quick and convenient method</li>
+                    <li>Suitable for shunt motors where flux is constant</li>
+                </ul>
+
+                <h3>Disadvantages</h3>
+                <ul>
+                    <li>Not suitable for series motors (flux varies with load)</li>
+                    <li>Assumes constant flux, which may not be true due to armature reaction</li>
+                    <li>Does not account for stray load losses</li>
+                    <li>Accuracy depends on accurate measurement of armature resistance</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="procedure" class="experiment-section">
+            <h2><span class="section-icon">📜</span> Procedure</h2>
+            <div class="content-box">
+                <h3>Apparatus Required</h3>
+                <ul>
+                    <li>DC Shunt Motor</li>
+                    <li>DC Supply (Variable)</li>
+                    <li>Field Rheostat</li>
+                    <li>Voltmeter, Ammeter</li>
+                    <li>Multimeter (for resistance measurement)</li>
+                    <li>Connecting wires</li>
+                </ul>
+
+                <h3>Circuit Diagram</h3>
+                <div class="circuit-container" style="text-align: center; margin: 20px 0;">
+                    <img src="../images/swinburne's.png" alt="Circuit Diagram"
+                        style="width: 85%; max-width: 900px; height: auto; border-radius: 10px; border: 2px solid #dee2e6; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>
+
+                <h3>Steps</h3>
+                <ol class="procedure-steps">
+                    <li>
+                        <strong>Measurement of Armature Resistance:</strong>
+                        <ul>
+                            <li>Disconnect the motor from supply</li>
+                            <li>Using multimeter, measure armature resistance (R<sub>a</sub>)</li>
+                            <li>Note: Apply low current to avoid heating effects</li>
+                            <li>Record the value: R<sub>a</sub> = _____ O</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>No-Load Test:</strong>
+                        <ul>
+                            <li>Connect the motor as per circuit diagram</li>
+                            <li>Keep the field rheostat at minimum resistance</li>
+                            <li>Start the motor with rated voltage applied</li>
+                            <li>Run the motor at no-load (without any mechanical load)</li>
+                            <li>Adjust field rheostat to get rated speed</li>
+                            <li>Note down:
+                                <ul>
+                                    <li>Supply voltage (V<sub>0</sub>)</li>
+                                    <li>No-load current (I<sub>0</sub>)</li>
+                                    <li>Field current (I<sub>f</sub>)</li>
+                                    <li>Speed (N<sub>0</sub>)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Calculations:</strong>
+                        <ul>
+                            <li>Calculate no-load input power: P<sub>0</sub> = V<sub>0</sub> ×  I<sub>0</sub></li>
+                            <li>Calculate constant losses: P<sub>c</sub> ≈ P<sub>0</sub></li>
+                            <li>For different load currents, calculate:
+                                <ul>
+                                    <li>Input power: P<sub>in</sub> = V ×  I<sub>a</sub></li>
+                                    <li>Copper loss: P<sub>cu</sub> = I<sub>a</sub>²R<sub>a</sub></li>
+                                    <li>Total losses: P<sub>loss</sub> = P<sub>c</sub> + P<sub>cu</sub></li>
+                                    <li>Output power: P<sub>out</sub> = P<sub>in</sub> - P<sub>loss</sub></li>
+                                    <li>Efficiency: η = (P<sub>out</sub> / P<sub>in</sub>) ×  100%</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Results:</strong>
+                        <ul>
+                            <li>Tabulate the results for different loads</li>
+                            <li>Plot efficiency vs. load current curve</li>
+                            <li>Determine maximum efficiency point</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Precautions</h3>
+                <ul class="precautions">
+                    <li> Ensure motor runs at no-load (free rotation)</li>
+                    <li> Apply rated voltage only</li>
+                    <li> Measure armature resistance accurately</li>
+                    <li> Allow motor to reach steady state before taking readings</li>
+                    <li> This method is valid only for shunt motors</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="calculations" class="experiment-section">
+            <h2><span class="section-icon">📊</span> Sample Calculations</h2>
+            <div class="content-box">
+                <h3>Given Data</h3>
+                <div class="data-table">
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Rated Voltage (V)</td>
+                            <td>220 V</td>
+                        </tr>
+                        <tr>
+                            <td>Rated Current (I)</td>
+                            <td>10 A</td>
+                        </tr>
+                        <tr>
+                            <td>Rated Power</td>
+                            <td>2 HP (1492 W)</td>
+                        </tr>
+                        <tr>
+                            <td>Armature Resistance (R<sub>a</sub>)</td>
+                            <td>2.5 Ω</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>No-Load Test Reading</h3>
+                <div class="data-table">
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>No-Load Voltage (V<sub>0</sub>)</td>
+                            <td>220 V</td>
+                        </tr>
+                        <tr>
+                            <td>No-Load Current (I<sub>0</sub>)</td>
+                            <td>2.5 A</td>
+                        </tr>
+                        <tr>
+                            <td>Field Current (I<sub>f</sub>)</td>
+                            <td>0.5 A</td>
+                        </tr>
+                        <tr>
+                            <td>No-Load Speed (N<sub>0</sub>)</td>
+                            <td>1500 RPM</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Calculations</h3>
+                <div class="calculation-box">
+                    <p><strong>Step 1: Calculate No-Load Input Power</strong></p>
+                    <p>P<sub>0</sub> = V<sub>0</sub> ×  I<sub>0</sub> = 220 ×  2.5 = <strong>550 W</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 2: Calculate Constant Losses</strong></p>
+                    <p>Armature current at no-load: I<sub>a0</sub> = I<sub>0</sub> - I<sub>f</sub> = 2.5 - 0.5 = 2.0 A
+                    </p>
+                    <p>No-load copper loss: I<sub>a0</sub>²R<sub>a</sub> = (2.0)² ×  2.5 = 10 W</p>
+                    <p>Constant losses: P<sub>c</sub> = P<sub>0</sub> - I<sub>a0</sub>²R<sub>a</sub> = 550 - 10 =
+                        <strong>540 W</strong>
+                    </p>
+                </div>
+
+                <h3>Efficiency Calculation at Load Current I<sub>a</sub> = 8 A</h3>
+                <div class="calculation-box">
+                    <p><strong>Step 3: Calculate Input Power</strong></p>
+                    <p>Total current: I = I<sub>a</sub> + I<sub>f</sub> = 8 + 0.5 = 8.5 A</p>
+                    <p>P<sub>in</sub> = V ×  I = 220 ×  8.5 = <strong>1870 W</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 4: Calculate Copper Loss</strong></p>
+                    <p>P<sub>cu</sub> = I<sub>a</sub>²R<sub>a</sub> = (8)² ×  2.5 = 64 ×  2.5 = <strong>160 W</strong>
+                    </p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 5: Calculate Total Losses</strong></p>
+                    <p>P<sub>loss</sub> = P<sub>c</sub> + P<sub>cu</sub> = 540 + 160 = <strong>700 W</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 6: Calculate Output Power</strong></p>
+                    <p>P<sub>out</sub> = P<sub>in</sub> - P<sub>loss</sub> = 1870 - 700 = <strong>1170 W</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 7: Calculate Efficiency</strong></p>
+                    <p>η = (P<sub>out</sub> / P<sub>in</sub>) ×  100%</p>
+                    <p>η = (1170 / 1870) ×  100% = <strong>62.57%</strong></p>
+                </div>
+
+                <h3>Expected Results</h3>
+                <ul>
+                    <li>Constant losses remain approximately constant at all loads</li>
+                    <li>Efficiency increases with load up to a certain point, then decreases</li>
+                    <li>Maximum efficiency occurs when constant losses = variable losses</li>
+                    <li>For the given example: Maximum efficiency occurs when I<sub>a</sub>²R<sub>a</sub> =
+                        P<sub>c</sub></li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="simulation-section">
+            <a href="simulation_swinburne.html" class="btn-simulation">🚀 Start Simulation</a>
+        </div>
+
+        <div class="back-button">
+            <a href="../index.html" class="btn-back">🏠 Back to Home</a>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+</body>

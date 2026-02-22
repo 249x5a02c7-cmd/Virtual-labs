@@ -1,0 +1,35 @@
+
+-----------------------------------------
+ID: 1771775853284
+Timestamp: 22/02/2026, 21:27:33
+Name: Varun
+Email: varunchitiveli@gmail.com
+Subject: overview
+Message:
+excellent
+-----------------------------------------
+
+
+-----------------------------------------
+ID: 1771775947732
+Timestamp: 22/02/2026, 21:29:07
+Name: Varun
+Email: varunchitiveli@gmail.com
+Subject: images
+Message:
+can i save images of my experiment
+
+-----------------------------------------
+
+
+-----------------------------------------
+ID: 1771779130454
+Timestamp: 22/02/2026, 22:22:10
+Name: varun
+Email: varunchitiveli@gmail.com
+Subject: madhyalo unwanted symbols vasthunnai
+Message:
+lets fix it
+
+-----------------------------------------
+

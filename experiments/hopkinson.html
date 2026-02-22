@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hopkinson's Test</title>
+    <link rel="icon" href="../images/Page_logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header-container">
+        <div class="logo">
+            <a href="../index.html"><img src="../images/logo.png" alt="College Logo"></a>
+        </div>
+        <div class="title">
+            <h1>G Pulla Reddy Engineering College</h1>
+            <h2>Electrical Machines – Virtual Laboratory</h2>
+        </div>
+        <div class="nav-links" style="display: flex; gap: 20px; align-items: center; margin-left: 20px;"><a
+                href="../index.html" style="color: white; text-decoration: none; font-weight: 500;">Home</a><a
+                href="../help.html" style="color: white; text-decoration: none; font-weight: 500;">Help</a></div>
+        <div class="nav-auth" id="navAuth"></div>
+    </header>
+
+    <div class="experiment-container">
+        <div class="experiment-header">
+            <h1>Hopkinson's Test</h1>
+            <p class="experiment-subtitle">Back-to-Back Test for DC Machine Efficiency</p>
+        </div>
+
+        <nav class="experiment-nav">
+            <a href="#aim" class="nav-link">Aim</a>
+            <a href="#theory" class="nav-link">Theory</a>
+            <a href="#procedure" class="nav-link">Procedure</a>
+            <a href="#calculations" class="nav-link">Sample Calculations</a>
+            <a href="simulation_hopkinson.html" class="nav-link simulation-link">Simulation</a>
+        </nav>
+
+        <section id="aim" class="experiment-section">
+            <h2><span class="section-icon">🎯</span> Aim</h2>
+            <div class="content-box">
+                <p>To determine the efficiency of two identical DC machines (motor and generator) using Hopkinson's test
+                    (back-to-back test or regenerative test).</p>
+                <div class="objectives">
+                    <h3>Objectives:</h3>
+                    <ul>
+                        <li>To determine the efficiency of both machines simultaneously</li>
+                        <li>To measure the losses of both machines</li>
+                        <li>To test machines at full-load conditions economically</li>
+                        <li>To understand the regenerative method of testing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="theory" class="experiment-section">
+            <h2><span class="section-icon">📖</span> Theory</h2>
+            <div class="content-box">
+                <h3>Introduction</h3>
+                <p>Hopkinson's test is a regenerative test method used to determine the efficiency of two identical DC
+                    machines. One machine acts as a motor driving the other machine which acts as a generator. The
+                    generator feeds back power to the motor, making this test very economical.</p>
+
+                <h3>Principle</h3>
+                <p>In this test, two identical DC machines are mechanically coupled. One machine (M) runs as a motor and
+                    drives the other machine (G) which runs as a generator. The generator supplies power back to the
+                    motor, and only the losses need to be supplied from the external source.</p>
+
+                <h3>Key Formulas</h3>
+                <div class="formula-box">
+                    <p><strong>Power Supplied from Source:</strong></p>
+                    <p class="formula">P<sub>input</sub> = V ×  I<sub>input</sub> watts</p>
+                    <p>This power supplies only the losses of both machines</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Total Losses:</strong></p>
+                    <p class="formula">P<sub>loss</sub> = P<sub>input</sub> = Losses of Motor + Losses of Generator</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Motor Input Power:</strong></p>
+                    <p class="formula">P<sub>M_in</sub> = V ×  I<sub>M</sub> watts</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Generator Output Power:</strong></p>
+                    <p class="formula">P<sub>G_out</sub> = V ×  I<sub>G</sub> watts</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Motor Output Power:</strong></p>
+                    <p class="formula">P<sub>M_out</sub> = P<sub>G_out</sub> + Mechanical losses</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Motor Efficiency:</strong></p>
+                    <p class="formula">η<sub>M</sub> = P<sub>M_out</sub> / P<sub>M_in</sub> ×  100%</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Generator Efficiency:</strong></p>
+                    <p class="formula">η<sub>G</sub> = P<sub>G_out</sub> / P<sub>G_in</sub> ×  100%</p>
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Assuming Equal Losses:</strong></p>
+                    <p class="formula">Losses per machine = P<sub>input</sub> / 2</p>
+                    <p>Motor efficiency: η<sub>M</sub> = (P<sub>M_in</sub> - P<sub>loss</sub>/2) / P<sub>M_in</sub> × 
+                        100%</p>
+                    <p>Generator efficiency: η<sub>G</sub> = P<sub>G_out</sub> / (P<sub>G_out</sub> +
+                        P<sub>loss</sub>/2) ×  100%</p>
+                </div>
+
+                <h3>Advantages</h3>
+                <ul>
+                    <li>Very economical - requires only losses to be supplied</li>
+                    <li>Both machines can be tested at full-load conditions</li>
+                    <li>No need for external loading arrangement</li>
+                    <li>Continuous operation possible</li>
+                    <li>Temperature rise can be observed</li>
+                </ul>
+
+                <h3>Disadvantages</h3>
+                <ul>
+                    <li>Requires two identical machines</li>
+                    <li>Cannot separate losses of individual machines easily</li>
+                    <li>Assumes equal losses in both machines</li>
+                    <li>More complex connections</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="procedure" class="experiment-section">
+            <h2><span class="section-icon">📜</span> Procedure</h2>
+            <div class="content-box">
+                <h3>Apparatus Required</h3>
+                <ul>
+                    <li>Two Identical DC Machines (Shunt motors/generators)</li>
+                    <li>DC Supply (Variable)</li>
+                    <li>Field Rheostats (2 nos.)</li>
+                    <li>Voltmeters (2-3 nos.)</li>
+                    <li>Ammeters (4-5 nos.)</li>
+                    <li>Wattmeter (optional)</li>
+                    <li>Coupling arrangement</li>
+                    <li>Connecting wires</li>
+                </ul>
+
+                <h3>Circuit Diagram</h3>
+                <div class="circuit-container" style="text-align: center; margin: 20px 0;">
+                    <img src="../images/hopkinson.png" alt="Circuit Diagram"
+                        style="width: 85%; max-width: 900px; height: auto; border-radius: 10px; border: 2px solid #dee2e6; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>
+
+                <h3>Steps</h3>
+                <ol class="procedure-steps">
+                    <li>
+                        <strong>Connection Setup:</strong>
+                        <ul>
+                            <li>Connect the two machines mechanically (couple them)</li>
+                            <li>Connect Machine M (Motor) to DC supply</li>
+                            <li>Connect Machine G (Generator) in parallel with Motor</li>
+                            <li>Connect field rheostats for both machines</li>
+                            <li>Connect voltmeters and ammeters as per circuit diagram</li>
+                            <li>Ensure all connections are correct and secure</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Starting Procedure:</strong>
+                        <ul>
+                            <li>Set both field rheostats to maximum resistance</li>
+                            <li>Close the switch to start Machine M (Motor)</li>
+                            <li>Adjust the field of Motor to get desired speed</li>
+                            <li>Excite the Generator field separately</li>
+                            <li>Adjust Generator field to build up voltage</li>
+                            <li>Close the switch to connect Generator to Motor</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Loading Test:</strong>
+                        <ul>
+                            <li>Adjust the field currents to vary the load</li>
+                            <li>For each load condition, note down:
+                                <ul>
+                                    <li>Supply voltage (V)</li>
+                                    <li>Input current from supply (I<sub>input</sub>)</li>
+                                    <li>Motor current (I<sub>M</sub>)</li>
+                                    <li>Generator current (I<sub>G</sub>)</li>
+                                    <li>Motor field current (I<sub>fM</sub>)</li>
+                                    <li>Generator field current (I<sub>fG</sub>)</li>
+                                    <li>Speed (N)</li>
+                                </ul>
+                            </li>
+                            <li>Take readings for different load conditions</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Observations:</strong>
+                        <ul>
+                            <li>Record all readings in a tabular format</li>
+                            <li>Calculate input power, output power, and losses</li>
+                            <li>Calculate efficiency of both machines</li>
+                            <li>Plot efficiency vs. load curves</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Precautions</h3>
+                <ul class="precautions">
+                    <li> Ensure both machines are identical</li>
+                    <li> Check all connections before starting</li>
+                    <li> Start with minimum field current</li>
+                    <li> Do not exceed rated current and voltage</li>
+                    <li> Ensure proper coupling between machines</li>
+                    <li> Monitor temperature rise during test</li>
+                    <li> Adjust fields gradually</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="calculations" class="experiment-section">
+            <h2><span class="section-icon">📊</span> Sample Calculations</h2>
+            <div class="content-box">
+                <h3>Given Data</h3>
+                <div class="data-table">
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Rated Voltage (V)</td>
+                            <td>220 V</td>
+                        </tr>
+                        <tr>
+                            <td>Rated Current (I)</td>
+                            <td>10 A</td>
+                        </tr>
+                        <tr>
+                            <td>Rated Power</td>
+                            <td>2 HP (1492 W)</td>
+                        </tr>
+                        <tr>
+                            <td>Rated Speed</td>
+                            <td>1500 RPM</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Test Reading</h3>
+                <div class="data-table">
+                    <table>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Supply Voltage (V)</td>
+                            <td>220 V</td>
+                        </tr>
+                        <tr>
+                            <td>Input Current from Supply (I<sub>input</sub>)</td>
+                            <td>3.5 A</td>
+                        </tr>
+                        <tr>
+                            <td>Motor Current (I<sub>M</sub>)</td>
+                            <td>10 A</td>
+                        </tr>
+                        <tr>
+                            <td>Generator Current (I<sub>G</sub>)</td>
+                            <td>9.5 A</td>
+                        </tr>
+                        <tr>
+                            <td>Motor Field Current (I<sub>fM</sub>)</td>
+                            <td>0.5 A</td>
+                        </tr>
+                        <tr>
+                            <td>Generator Field Current (I<sub>fG</sub>)</td>
+                            <td>0.5 A</td>
+                        </tr>
+                        <tr>
+                            <td>Speed (N)</td>
+                            <td>1500 RPM</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Calculations</h3>
+                <div class="calculation-box">
+                    <p><strong>Step 1: Calculate Power Supplied from Source</strong></p>
+                    <p>P<sub>input</sub> = V ×  I<sub>input</sub> = 220 ×  3.5 = <strong>770 W</strong></p>
+                    <p>This power supplies only the losses of both machines</p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 2: Calculate Total Losses</strong></p>
+                    <p>P<sub>loss_total</sub> = P<sub>input</sub> = <strong>770 W</strong></p>
+                    <p>Assuming equal losses: Losses per machine = 770 / 2 = <strong>385 W</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 3: Calculate Motor Input Power</strong></p>
+                    <p>P<sub>M_in</sub> = V ×  I<sub>M</sub> = 220 ×  10 = <strong>2200 W</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 4: Calculate Generator Output Power</strong></p>
+                    <p>P<sub>G_out</sub> = V ×  I<sub>G</sub> = 220 ×  9.5 = <strong>2090 W</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 5: Calculate Motor Output Power</strong></p>
+                    <p>Motor output = Generator input (approximately)</p>
+                    <p>P<sub>M_out</sub> ≈ P<sub>G_out</sub> + Mechanical losses</p>
+                    <p>For calculation: P<sub>M_out</sub> = P<sub>M_in</sub> - Losses<sub>M</sub></p>
+                    <p>P<sub>M_out</sub> = 2200 - 385 = <strong>1815 W</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 6: Calculate Generator Input Power</strong></p>
+                    <p>P<sub>G_in</sub> = P<sub>G_out</sub> + Losses<sub>G</sub></p>
+                    <p>P<sub>G_in</sub> = 2090 + 385 = <strong>2475 W</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 7: Calculate Motor Efficiency</strong></p>
+                    <p>η<sub>M</sub> = (P<sub>M_out</sub> / P<sub>M_in</sub>) ×  100%</p>
+                    <p>η<sub>M</sub> = (1815 / 2200) ×  100% = <strong>82.5%</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 8: Calculate Generator Efficiency</strong></p>
+                    <p>η<sub>G</sub> = (P<sub>G_out</sub> / P<sub>G_in</sub>) ×  100%</p>
+                    <p>η<sub>G</sub> = (2090 / 2475) ×  100% = <strong>84.4%</strong></p>
+                </div>
+
+                <div class="calculation-box">
+                    <p><strong>Step 9: Verification</strong></p>
+                    <p>Motor input = 2200 W</p>
+                    <p>Generator output = 2090 W</p>
+                    <p>Power from supply = 770 W</p>
+                    <p>Check: Motor input = Generator output + Power from supply</p>
+                    <p>2200 ≈ 2090 + 770 = 2860 (difference due to losses)</p>
+                    <p>Actually: Motor input = Generator output + Total losses</p>
+                    <p>2200 = 2090 + 110 (difference in currents ×  voltage)</p>
+                </div>
+
+                <h3>Expected Results</h3>
+                <ul>
+                    <li>Power from supply is only a fraction of rated power (typically 10-20%)</li>
+                    <li>Efficiency of both machines is typically 75-85%</li>
+                    <li>Motor and generator efficiencies are approximately equal</li>
+                    <li>Total losses can be directly measured from supply power</li>
+                    <li>This method is very economical for testing large machines</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="simulation-section">
+            <a href="simulation_hopkinson.html" class="btn-simulation">🚀 Start Simulation</a>
+        </div>
+
+        <div class="back-button">
+            <a href="../index.html" class="btn-back">🏠 Back to Home</a>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+</body>

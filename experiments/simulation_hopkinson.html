@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hopkinson's Test Simulation</title>
+    <link rel="icon" href="../images/Page_logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <style>
+        .simulation-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            min-height: calc(100vh - 200px);
+        }
+
+        .simulation-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .simulation-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .control-panel,
+        .results-panel {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .control-group input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .result-display {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .result-display strong {
+            color: #1e3c72;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .result-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .btn-calculate {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .simulation-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header-container">
+        <div class="logo">
+            <a href="../index.html"><img src="../images/logo.png" alt="College Logo"></a>
+        </div>
+        <div class="title">
+            <h1>G Pulla Reddy Engineering College</h1>
+            <h2>Electrical Machines – Virtual Laboratory</h2>
+        </div>
+        <div class="nav-links" style="display: flex; gap: 20px; align-items: center; margin-left: 20px;"><a href="../index.html" style="color: white; text-decoration: none; font-weight: 500;">Home</a><a href="../help.html" style="color: white; text-decoration: none; font-weight: 500;">Help</a></div><div class="nav-auth" id="navAuth"></div>
+    </header>
+
+    <div class="simulation-container">
+        <div class="simulation-header">
+            <h1>Hopkinson's Test - Simulation</h1>
+            <p class="experiment-subtitle">Back-to-Back Test on DC Machines</p>
+        </div>
+
+        <div class="simulation-panel">
+            <div class="control-panel">
+                <h2 style="color: #1e3c72; margin-bottom: 20px;">Control Parameters</h2>
+
+                <div class="control-group">
+                    <label>Supply Voltage (V):</label>
+                    <input type="number" id="voltage" value="220" min="100" max="250" step="1">
+                    <input type="range" id="voltageRange" min="100" max="250" value="220" step="1">
+                </div>
+
+                <div class="control-group">
+                    <label>Supply Current (I) in Amps:</label>
+                    <input type="number" id="inputCurrent" value="3.5" min="0" max="10" step="0.1">
+                    <input type="range" id="inputCurrentRange" min="0" max="10" value="3.5" step="0.1">
+                </div>
+
+                <div class="control-group">
+                    <label>Motor Current (I<sub>m</sub>) in Amps:</label>
+                    <input type="number" id="motorCurrent" value="10" min="0" max="15" step="0.5">
+                    <input type="range" id="motorCurrentRange" min="0" max="15" value="10" step="0.5">
+                </div>
+
+                <div class="control-group">
+                    <label>Generator Current (I<sub>g</sub>) in Amps:</label>
+                    <input type="number" id="generatorCurrent" value="6.5" min="0" max="15" step="0.5">
+                    <input type="range" id="generatorCurrentRange" min="0" max="15" value="6.5" step="0.5">
+                </div>
+
+                <button class="btn-calculate" onclick="calculateResults()">Calculate Results</button>
+                <button class="btn-calculate" onclick="addToTable()"
+                    style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); margin-top: 10px;">Add to
+                    Table</button>
+                <button class="btn-calculate" onclick="resetValues()"
+                    style="background: linear-gradient(135deg, #6c757d 0%, #495057 100%); margin-top: 10px;">Reset</button>
+            </div>
+
+            <div class="results-panel">
+                <h2 style="color: #1e3c72; margin-bottom: 20px;">Calculated Results</h2>
+
+                <div class="result-display">
+                    <strong>Total losses in both machines:</strong>
+                    <div class="result-value" id="totalLosses">770.00 W</div>
+                </div>
+
+                <div class="result-display">
+                    <strong>Motor Efficiency (?<sub>m</sub>):</strong>
+                    <div class="result-value" id="motorEfficiency">82.50 %</div>
+                </div>
+
+                <div class="result-display">
+                    <strong>Generator Efficiency (?<sub>g</sub>):</strong>
+                    <div class="result-value" id="generatorEfficiency">84.44 %</div>
+                </div>
+
+                <div class="result-display"
+                    style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-left-color: #2ecc71;">
+                    <strong>Status:</strong>
+                    <div id="status" style="color: #2ecc71; font-weight: 600;">System Ready</div>
+                </div>
+
+                <div class="action-buttons" style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button id="downloadBtn" class="btn-calculate" onclick="downloadResults()"
+                        style="flex: 1; padding: 10px; font-size: 14px; background: #2d3748; margin-top: 0;">?? Download
+                        Results</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="graph-container" id="captureRegion"
+            style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-top: 30px;">
+            <h2 style="color: #1e3c72; margin-bottom: 20px; text-align: center;">Efficiency Characteristics &
+                Observation Table</h2>
+            <canvas id="performanceChart" style="width: 100%; height: 400px; margin-bottom: 30px;"></canvas>
+
+            <div style="margin-top: 30px;">
+                <h3 style="color: #1e3c72; margin-bottom: 15px;">Observation Table</h3>
+                <div style="overflow-x: auto;">
+                    <table id="observationTable"
+                        style="width: 100%; border-collapse: collapse; text-align: center; background: white;">
+                        <thead>
+                            <tr style="background-color: #f8f9fa; color: #1e3c72;">
+                                <th style="padding: 12px; border: 1px solid #dee2e6;">S.No</th>
+                                <th style="padding: 12px; border: 1px solid #dee2e6;">Voltage (V)</th>
+                                <th style="padding: 12px; border: 1px solid #dee2e6;">Motor I (A)</th>
+                                <th style="padding: 12px; border: 1px solid #dee2e6;">Gen I (A)</th>
+                                <th style="padding: 12px; border: 1px solid #dee2e6;">Motor ? (%)</th>
+                                <th style="padding: 12px; border: 1px solid #dee2e6;">Gen ? (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-button" style="margin-top: 40px;">
+            <a href="hopkinson.html" class="btn-back">🏠 Back to Experiment</a>
+            <a href="../index.html" class="btn-back" style="margin-left: 15px;">🏠 Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        const inputs = ['voltage', 'inputCurrent', 'motorCurrent', 'generatorCurrent'];
+        inputs.forEach(id => {
+            const num = document.getElementById(id);
+            const range = document.getElementById(id + 'Range');
+            range.addEventListener('input', () => { num.value = range.value; calculateResults(); });
+            num.addEventListener('input', () => { range.value = num.value; calculateResults(); });
+        });
+
+        function calculateResults() {
+            const V = parseFloat(document.getElementById('voltage').value);
+            const Iinput = parseFloat(document.getElementById('inputCurrent').value);
+            const IM = parseFloat(document.getElementById('motorCurrent').value);
+            const IG = parseFloat(document.getElementById('generatorCurrent').value);
+
+            const totalLosses = V * Iinput;
+            const lossesPerMachine = totalLosses / 2;
+
+            // As Motor
+            const Pinput_m = V * IM;
+            const motorEff = Pinput_m > 0 ? ((Pinput_m - lossesPerMachine) / Pinput_m) * 100 : 0;
+
+            // As Generator
+            const Pout_g = V * IG;
+            const generatorEff = (Pout_g + lossesPerMachine) > 0 ? (Pout_g / (Pout_g + lossesPerMachine)) * 100 : 0;
+
+            document.getElementById('totalLosses').textContent = totalLosses.toFixed(2) + ' W';
+            document.getElementById('motorEfficiency').textContent = motorEff.toFixed(2) + ' %';
+            document.getElementById('generatorEfficiency').textContent = generatorEff.toFixed(2) + ' %';
+        }
+
+        let readings = [];
+        let performanceChart;
+
+        function addToTable() {
+            calculateResults();
+            const reading = {
+                id: readings.length + 1,
+                V: parseFloat(document.getElementById('voltage').value),
+                IM: parseFloat(document.getElementById('motorCurrent').value),
+                IG: parseFloat(document.getElementById('generatorCurrent').value),
+                motorEff: parseFloat(document.getElementById('motorEfficiency').textContent),
+                genEff: parseFloat(document.getElementById('generatorEfficiency').textContent)
+            };
+            readings.push(reading);
+            updateTable();
+            updateChart();
+        }
+
+        function updateTable() {
+            const tbody = document.querySelector('#observationTable tbody');
+            tbody.innerHTML = readings.map(r => `
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">${r.id}</td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">${r.V}</td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">${r.IM}</td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">${r.IG}</td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">${r.motorEff.toFixed(2)}</td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">${r.genEff.toFixed(2)}</td>
+                </tr>
+            `).join('');
+        }
+
+        function updateChart() {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            const sorted = [...readings].sort((a, b) => a.IM - b.IM);
+
+            if (performanceChart) performanceChart.destroy();
+
+            performanceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: sorted.map(r => r.IM),
+                    datasets: [
+                        {
+                            label: 'Motor Efficiency (%)',
+                            data: sorted.map(r => r.motorEff),
+                            borderColor: '#667eea',
+                            borderWidth: 3,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Generator Efficiency (%)',
+                            data: sorted.map(r => r.genEff),
+                            borderColor: '#ff7675',
+                            borderWidth: 3,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true, max: 100, title: { display: true, text: 'Efficiency (%)' } },
+                        x: { title: { display: true, text: 'Motor Current (A)' } }
+                    }
+                }
+            });
+        }
+
+        async function downloadResults() {
+            if (readings.length === 0) {
+                alert("Please add some readings to the table first.");
+                return;
+            }
+
+            const btn = document.getElementById('downloadBtn');
+            const originalText = btn.textContent;
+            btn.textContent = "Generating...";
+            btn.disabled = true;
+
+            try {
+                const element = document.getElementById('captureRegion');
+                const canvas = await html2canvas(element, {
+                    backgroundColor: '#ffffff',
+                    scale: 2
+                });
+
+                const link = document.createElement('a');
+                link.download = 'Hopkinson_Test_Results.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            } catch (error) {
+                console.error("Download failed:", error);
+                alert("Failed to download results.");
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        function resetValues() { location.reload(); }
+
+        window.onload = () => { calculateResults(); updateChart(); };
+    </script>
+
+    <script src="../js/auth.js"></script>
+</body>
+
+</html>
