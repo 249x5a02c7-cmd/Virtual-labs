@@ -18,6 +18,16 @@
 
 > **[https://249x5a02c7-cmd.github.io/Virtual-labs/](https://249x5a02c7-cmd.github.io/Virtual-labs/)**
 
+## 📱 Scan QR Code to Visit
+
+<div align="center">
+
+![QR Code - GPREC Virtual Laboratory](images/qr_code.png)
+
+*Scan with your phone camera to open the Virtual Lab instantly!*
+
+</div>
+
 ---
 
 ## 📖 About
